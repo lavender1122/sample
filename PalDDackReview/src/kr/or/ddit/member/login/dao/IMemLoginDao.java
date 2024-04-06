@@ -11,4 +11,6 @@ public interface IMemLoginDao {
 	 * @return
 	 */
 	public MemberVO loginCheck(Map<String, Object> map);
+
+	public int idChk(String memId);
 }

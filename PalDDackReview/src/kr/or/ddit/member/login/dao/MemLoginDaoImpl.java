@@ -31,4 +31,18 @@ public class MemLoginDaoImpl implements IMemLoginDao {
 		}
 		return mv;
 	}
+
+	@Override
+	public int idChk(String memId) {
+		SqlSession session = MyBatisUtil.getInstance(true);
+		int cnt =0;
+		try {
+			cnt=session.selectOne("member.idChk", memId);
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return cnt;
+	}
 }

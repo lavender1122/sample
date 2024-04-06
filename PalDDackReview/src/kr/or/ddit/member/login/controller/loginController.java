@@ -29,7 +29,7 @@ public class loginController extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPw = request.getParameter("memPw");
 		
-		System.out.println(memId+":"+ memPw);
+//		System.out.println(memId+":"+ memPw);
 		
 		//service.logincheck 하기 위해 map rorcp todtjd
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -39,7 +39,7 @@ public class loginController extends HttpServlet {
 		IMemLoginService service = MemLoginServiceImpl.getInstance();
 		MemberVO mv = new MemberVO();
 		mv = service.loginCheck(map);
-		System.out.println("loginId>>"+mv);
+//		System.out.println("loginId>>"+mv);
 		
 		if(mv!=null) { //loginId 값 있다면 
 			HttpSession session = request.getSession();

@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.utill.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <!DOCTYPE html>
@@ -138,6 +139,10 @@ a:visited, a:active {
 #searchButton {
   cursor: pointer;
 }
+<%
+	MemberVO mv = (MemberVO)session.getAttribute("mv");
+	
+%>
     </style>
 </head>
 <body>
@@ -145,10 +150,25 @@ a:visited, a:active {
         <div class="header_detail">
             <a href="<%=request.getContextPath()%>/main.do"><img src="<%=request.getContextPath()%>/img/로고후보6.jpg" alt=""></a>
             <ul>
+            <%
+            	if(mv ==null){
+            %>
                 <li class="login_li"><a href="logincontroller.do">로그인</a></li>
-                <li class="login_li">회원가입</li>
-                <li class="login_li">마이페이지</li>
-                <li class="login_li">고객센터</li>
+                <li class="login_li"><a href="join.do">회원가입</a></li>
+                <li class="login_li"><a href="logincontroller.do">마이페이지</a></li>
+                <li class="login_li"><a href="#">고객센터</a></li>
+            <% 
+            	}else{ //로그인되면
+            	
+            %>
+             	<li class="logout_li"><%=mv.getMemName() %>&nbsp;님 환영합니다</li>
+		        <li class="logout_li"><a href="#" id="logout" onclick="fn_logout(this)">로그아웃</a></li>
+<%-- 		        <li class="logout_li"><a href="<%=request.getContextPath()%>/logoutController.do" id="logout" onclick="fn_logout(this)">로그아웃</a></li> --%>
+		        <li class="logout_li"><a href="#">마이페이지</a></li>
+		        <li class="logout_li"><a href="#">고객센터</a></li>
+            <%
+            	}
+            %>
             </ul>
             <form action="" method="post" id="searchForm">
                 <div class="search">
@@ -182,3 +202,24 @@ a:visited, a:active {
                 </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function fn_logout(pthis){
+//     	pthis.preventDefault(); //기본링크동작 방지 왜 안되지?
+    	//confirm 대화상자
+    	if(confirm('정말로 로그아웃하시겠습니까?')){
+    		$.ajax({
+    			url:'/logoutController.do',
+    			type: 'GET',
+    			success:function(response){
+//     				console.log(response);
+    				alert('로그아웃 되었습니다');
+    				location.href='main.do';
+    			},
+    			error:function(){
+    				alert('로그아웃 실패했습니다.');
+    			}
+    		});
+    	}
+    }
+    </script>

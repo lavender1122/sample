@@ -21,5 +21,9 @@ public class MemLoginServiceImpl implements IMemLoginService {
 	@Override
 	public MemberVO loginCheck(Map<String, Object> map) {
 		return dao.loginCheck(map);
+	}
+	@Override
+	public int idChk(String memId) {
+		return dao.idChk(memId);
 	};
 }
