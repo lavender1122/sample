@@ -38,19 +38,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="mapper/jjim_member.xml" />
-		<mapper resource="mapper/prdList.xml" />
-		<mapper resource="mapper/login.xml" />
-		<mapper resource="mapper/search.xml" />
-		<mapper resource="mapper/addrAdd.xml" />
-		<mapper resource="mapper/buy.xml" />
-		<mapper resource="mapper/cart.xml" />
-		<mapper resource="mapper/main.xml" />
-		<mapper resource="mapper/order.xml" />
-		<mapper resource="mapper/door.xml" />
-		<mapper resource="mapper/notice.xml" />
 		<mapper resource="mapper/member.xml" />
-		<mapper resource="mapper/admin.xml" />
 	</mappers>
 	
 </configuration>
