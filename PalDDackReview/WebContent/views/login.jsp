@@ -15,7 +15,7 @@
                     <input type="submit" id="loginAjax" class="btn btn-primary col-xs-12" value="로그인">
                 </div>
                 <div class="col-xs-12">
-                    <a href="#" class="btn col-xs-12 btn btn-default" id="register" >회원가입</a>
+                    <a href="join.do" class="btn col-xs-12 btn btn-default" id="register" >회원가입</a>
                 </div>
                 <div class="col-xs-12">
                     <a href="#"><img src="/img/파비콘.jpg" id="image" alt="관라자 로그인"></a>

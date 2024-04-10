@@ -12,5 +12,4 @@ public interface IMemLoginDao {
 	 */
 	public MemberVO loginCheck(Map<String, Object> map);
 
-	public int idChk(String memId);
 }

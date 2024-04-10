@@ -205,7 +205,7 @@ a:visited, a:active {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript">
     function fn_logout(pthis){
-//     	pthis.preventDefault(); //기본링크동작 방지 왜 안되지?
+//     	e.preventDefault(); //기본링크동작  왜 하지?
     	//confirm 대화상자
     	if(confirm('정말로 로그아웃하시겠습니까?')){
     		$.ajax({

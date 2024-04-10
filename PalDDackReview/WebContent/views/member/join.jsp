@@ -4,7 +4,7 @@
      <link rel="stylesheet" href="/css/join.css">
             <h3><strong>01. 로그인정보</strong></h3>
                 <hr class="blue-hr">
-                <form action="#" method="post">
+                <form action="./join.do" method="post">
                             <div id="memIddiv">
 						        <label for="">*회원아이디</label>
 						        <input type="text" placeholder="아이디입력" name="memId" id="memId" required>
@@ -12,15 +12,17 @@
 						        <div id="disp"></div>
 						        <br>
 						    </div>
-						    <div id="memPw">
+						    <div id="memPwdiv">
 						        <label for="">*비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-						        <input type="password" name="mempw"  placeholder="비밀번호 입력" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}">
+						        <input type="password" name="mempw" id="memPw"  placeholder="비밀번호 입력" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}">
 						        <span>영문+숫자 8자리 이상</span>
 						    </div>
 						    <br>
-						    <div id="memPwck">
+						    <div id="memPwckdiv">
 						        <label for="">*비밀번호확인</label>
-						        <input type="password" name="memPwck"  placeholder="비밀번호 입력" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}">
+						        <input type="password" name="memPwck" id="memPwck" placeholder="비밀번호 입력" required pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}">
+						        <div id="ckpw">
+						        </div>
 						    </div>
                     <br>
                     <h3><strong>02.개인정보</strong></h3>
@@ -37,14 +39,14 @@
 					            <option value="">직접입력</option>
 					        </select>
 					        <span>-</span>
-					        <input type="text" name="memTel2" required onkeyup="chknum(event)">
+					        <input type="text" name="memTel2" required >
 					        <span>-</span>
-					        <input type="text" name="memTel3"required onkeyup="chknum(event)" >
+					        <input type="text" name="memTel3"required  >
 					    </div>
 					    <div id="memEmail">
 					        <label for="">이메일</label>
 					        <input type="text" name="memEmail" id="memEmail" placeholder="">@
-					        <select name="domainSelector" id="domainSelector">
+					        <select name="domainSelector" name="memEmail1" id="domainSelector">
 					            <option value="">직접 입력</option>
 					            <option value="@gmail.com">gmail.com</option>
 					            <option value="@naver.com">naver.com</option>
@@ -53,15 +55,15 @@
 					        </select>
 					    </div>
 					    <br><br>
-					    <div id="memAddr">
-					        <div class="addName">
+					    <div id="divmemAddr">
+					        <!--  <div class="divaddName">
 					            <label for="orderName" class="blue-background">이름</label>
 					            <input type="text" class="wid" id="memName" name="memName" placeholder="이름입력" required>
 					        </div>
-					        <div class="addName">
+					        <div class="divmemTel">
 					            <label for="orderTel" class="blue-background">휴대폰</label>
-					            <input type="text" class="wid" id="orderTel" name="memTel" placeholder="휴대폰입력" required>
-					        </div>
+					            <input type="text" class="wid" id="memTel" name="memTel" placeholder="휴대폰입력" required>
+					        </div> -->
 					        <div class="post">
 					            <label for="orderPost" class="blue-background">우편번호</label>
 					            <input type="text" class="widOrd" id="sample4_postcode" name="deliPostNo" placeholder="우편번호" required>
@@ -72,17 +74,18 @@
 					        <span id="guide" style="color:#999;display:none"></span>
 					        <label for="orderAddr" class="blue-background">상세주소</label>
 					        <input type="text" class="wid" id="sample4_detailAddress" name="deliAddrD" placeholder="상세주소" required>
-					        <div class="addMame">
+					        <!-- <div class="addMame">
 					            <label for="orderReq" class="blue-background">배송메모</label>
 					            <input type="text" class="wid" id="orderReq" name="deliReq" placeholder="배송메모" required>
-					        </div>
+					        </div> -->
 					        </div>
 					    <br><br><br>
 					    <div class="col-sm-3 text-center">
-			                <button type="button" class="btn btn-primary btn-wide" id="box1" onclick="check()">확인</button>
+			                <button type="submit" class="btn btn-primary btn-wide" id="box1" onclick="check()">확인</button>
 							<a href="#" 	class="btn btn-default btn-wide" id="box2" role="button">취소</a>
             			</div>
 					    </form>
+					    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>					    
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -102,14 +105,11 @@ function fn_idCk(pThis){
 		success:function(data,textStatus){
 			console.log(">>>>>>>",data)
 			if(data ==0){
-				console.log('0')
-				console.log("사용가능");
-				console.log(disp);
+// 				console.log("사용가능");
 				disp.innerHTML='사용가능'
 				
 			}else{
-				console.log('1')
-				console.log("사용불가능");
+// 				console.log("사용불가능");
 				disp.innerHTML='사용불가능'
 			}
 		},
@@ -118,6 +118,21 @@ function fn_idCk(pThis){
 		}
 	});
 }
+
+$(document).ready(function(){
+	$('#memPwck').keyup(function(){
+		
+ 	var passwd=$('#memPw').val();
+	var passwdck=$('#memPwck').val();
+	console.log(passwd);
+	if(passwdck==passwd){
+	$('#ckpw').html('사용가능');
+	}else{
+		$('#ckpw').html('사용불가능');
+	}
+	});
+});
+ 
 
 function chknum(event){
 	const regExp = /[^0-9]/g;

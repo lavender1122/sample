@@ -13,10 +13,4 @@ public interface IMemLoginService {
 	 */
 	public MemberVO loginCheck(Map<String, Object> map);
 
-	/**
-	 * idck
-	 * @param memId
-	 * @return
-	 */
-	public int idChk(String memId);
 }

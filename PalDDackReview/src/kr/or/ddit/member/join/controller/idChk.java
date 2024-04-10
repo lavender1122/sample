@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.login.dao.MemLoginDaoImpl;
-import kr.or.ddit.member.login.service.IMemLoginService;
-import kr.or.ddit.member.login.service.MemLoginServiceImpl;
+import kr.or.ddit.member.join.service.IMemJoinService;
+import kr.or.ddit.member.join.service.MemJoinServiceImpl;
 
 @WebServlet("/idchk.do")
 public class idChk extends HttpServlet {
@@ -24,17 +23,18 @@ public class idChk extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memId =request.getParameter("memId");
 		
-		IMemLoginService service = MemLoginServiceImpl.getInstance();
+		IMemJoinService service = MemJoinServiceImpl.getInstance();
 		
 		int cnt = service.idChk(memId);
 		System.out.println(cnt);
 		PrintWriter out = response.getWriter();//idChk.jsp로 데이터 보내는 역할
 		
-		out.println(cnt);
+//		out.println(cnt);
 		
-		/* 안됨!
-		 * if(cnt == 0) { out.println("0"); }else { out.println("1"); }
-		 */
+		
+		  if(cnt == 0) { out.println("0"); } 
+		  else { out.println("1"); }
+		 
 			
 	}
 

@@ -23,12 +23,4 @@
 	    MEM_ID =#{memId}
 	    and MEM_PW=#{memPw}
   	</select>
-  	<select id="idChk" resultType="int">
-  	SELECT
-	 count(*)
-	FROM
-	    member
-	where 
-	mem_id= #{memId}
-  	</select>
   </mapper>

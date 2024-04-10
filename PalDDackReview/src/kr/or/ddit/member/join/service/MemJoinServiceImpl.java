@@ -14,5 +14,9 @@ public class MemJoinServiceImpl implements IMemJoinService {
 		if(service == null) service = new MemJoinServiceImpl();
 		return service;
 	}
+	@Override
+	public int idChk(String memId) {
+		return dao.idChk(memId);
+	};
 
 }
